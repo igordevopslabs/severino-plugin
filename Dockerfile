@@ -27,11 +27,8 @@ COPY --from=builder /go/src/severino-plugin/severino-plugin /usr/local/bin/sever
 COPY ./scripts/init-kong.sh /init-kong.sh
 RUN chmod +x /init-kong.sh
 
-# Voltar para o usuário padrão do Kong
 USER 1000
 
-# Copiar as configurações do Kong
 COPY ./config /etc/kong/config
 
-# Definir o script como ponto de entrada
 ENTRYPOINT ["/init-kong.sh"]
