@@ -11,7 +11,7 @@ func GenerateTokenJwt() (string, error) {
 
 	claims := jwt.MapClaims{
 		"iss":   "my-issuer",
-		"roles": []string{"admin", "batata"},
+		"roles": []string{"admin", "superadmin"},
 	}
 
 	// Criar token com header fixo

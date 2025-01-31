@@ -11,9 +11,9 @@ import (
 // Struct para representar os parametros de configuração do plugin no Kong
 type Config struct {
 	Issuer         string   `json:"issuer"`
-	SecretKey      string   `json:"secret_key"`      // Usado para RS256
+	SecretKey      string   `json:"secret_key"`      // Usado para HS256
 	ClaimName      string   `json:"claim_name"`      // ex: "roles"
-	RequiredValues []string `json:"required_values"` // ex: ["admin", "user"] etc.
+	RequiredValues []string `json:"required_values"` // ex: ["admin", "superadmin"] etc.
 	Algorithm      string   `json:"algorithm"`       // ex: "RS256", "HS256"
 }
 
@@ -104,11 +104,14 @@ func (plugin *SeverinoPlugin) validateTokenJWT(tokenString string) (jwt.MapClaim
 }
 
 func (plugin *SeverinoPlugin) checkPermission(claims jwt.MapClaims) bool {
+
+	//validando se a claim name (roles) existe no token, se não, ja retorna false o que gerará um 401
 	claimValue, ok := claims[plugin.Config.ClaimName]
 	if !ok {
 		return false
 	}
 
+	//validando se claimName é de fato um array, pois caso não, não é possivel associar diversos escopos.
 	roles, ok := claimValue.([]interface{})
 	if !ok {
 		return false
