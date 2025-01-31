@@ -60,6 +60,7 @@ func (plugin *SeverinoPlugin) Access(kong *pdk.PDK) {
 	}
 }
 
+// valida se o header está no formato correto e extrai o valor do token
 func (plugin *SeverinoPlugin) getBearerToken(authHeader string) (string, bool) {
 	const prefix = "Bearer "
 	if len(authHeader) > len(prefix) && authHeader[:len(prefix)] == prefix {
@@ -70,9 +71,7 @@ func (plugin *SeverinoPlugin) getBearerToken(authHeader string) (string, bool) {
 
 func (plugin *SeverinoPlugin) validateTokenJWT(tokenString string) (jwt.MapClaims, error) {
 
-	var keyFunc jwt.Keyfunc
-
-	keyFunc = func(token *jwt.Token) (interface{}, error) {
+	keyFunc := func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method")
 		}
