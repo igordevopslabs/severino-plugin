@@ -7,5 +7,5 @@ import (
 
 func main() {
 	//Criar um server do KONG pdk e também registrar o plugin
-	server.StartServer(handler.New, "0.0.1", 1000)
+	server.StartServer(handler.New, "0.0.2", 1000)
 }

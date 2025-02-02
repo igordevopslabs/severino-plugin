@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/golang-jwt/jwt/v4"
 )
 
 func GenerateTokenJwt() (string, error) {
-	SECRET_KEY := "teste"
+	SECRET_KEY := "secretkey@123!"
 
 	claims := jwt.MapClaims{
 		"iss":   "my-issuer",
-		"roles": []string{"admin", "superadmin"},
+		"roles": []string{"admin", "superan"},
+		"exp":   time.Now().Add(24 * time.Hour).Unix(),
 	}
 
 	// Criar token com header fixo
