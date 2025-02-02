@@ -26,3 +26,5 @@ go.work.sum
 
 .request
 tests
+./certs
+certs
