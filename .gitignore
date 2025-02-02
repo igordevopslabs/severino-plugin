@@ -24,8 +24,6 @@ go.work.sum
 # env file
 .env
 
-.request
-tests
-./certs
-.certs
+
 .secrets
+.tests

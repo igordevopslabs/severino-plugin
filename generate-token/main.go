@@ -12,7 +12,7 @@ func GenerateTokenJwt() (string, error) {
 
 	claims := jwt.MapClaims{
 		"iss":   "my-issuer",
-		"roles": []string{"admin", "superan"},
+		"roles": []string{"admin", "superadmin"},
 		"exp":   time.Now().Add(24 * time.Hour).Unix(),
 	}
 
