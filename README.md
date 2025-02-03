@@ -24,7 +24,7 @@ docker-compose up --build
 
 Isso irá subir toda a stack do kong, além da sua database.
 
-**OBS:**Pode ser que seja necessário realizar alguns ajustes no Dockerfile devido a particularidades do SO em que esta sendo executado, por exemplo, se você for testar a partir de MacOs, ajustes nos sockets de rede podem ser necessários.
+**OBS:** Pode ser que seja necessário realizar alguns ajustes no Dockerfile devido a particularidades do SO em que esta sendo executado, por exemplo, se você for testar a partir de MacOs, ajustes nos sockets de rede podem ser necessários.
 
 Uma vez que você tenha inicializado todos os serviços usando o Docker Compose, várias interfaces estarão disponíveis para interação e administração do Kong. A seguir estão as mais relevantes:
 
