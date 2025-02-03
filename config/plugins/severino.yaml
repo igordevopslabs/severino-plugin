@@ -1,0 +1,13 @@
+_format_version: "3.0"
+_transform: false
+
+plugins:
+- name: severino-plugin
+  config:
+    secret_key: secretkey@123!
+    algorithm: HS256
+    issuer: my-issuer
+    claim_name: roles
+    required_values:
+      - admin
+      - superadmin

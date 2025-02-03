@@ -1,0 +1,10 @@
+_format_version: "3.0"
+_transform: false
+
+services:
+- name: tasks
+  url: https://jsonplaceholder.typicode.com
+  routes:
+  - name: task-route
+    paths:
+    - "/api"
