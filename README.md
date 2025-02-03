@@ -40,7 +40,7 @@ Se você encontrar problemas ao usar este ambiente Kong, a primeira coisa a faze
 #### Definindo o Service Gateway
 1. No menu lateral esquerdo, escolha a opção **Gateway Services**
 2. **New Gateway Service**
-3. Defina um nome para seu service, por exemplo, ```tasks``
+3. Defina um nome para seu service, por exemplo, ```tasks```
 4. No menu abaixo, em Service Endpoint, escolha a opção **Protocol, Host, Port and Path** e informe os valores de acordo. Aqui vai a sugestão para usar uma [fake API](https://jsonplaceholder.typicode.com/) já publicada na internet, isso facilitará os testes e elimina a necessidade de subir uma API para testar o plugin.
 
 #### Definindo a Rota
@@ -51,7 +51,7 @@ Após a definição do Service, vamos à definição da Rota.
 3. De um nome a rota, de preferência algo que tenha alguma ligação com o serviço.
 4. Selecione os protocolos adequados, para a maioria dos exemplos **HTTP/HTTPS** irá servir.
 5. Defina um path (ou rota) para o seu serviço, por exemplo: ```/api```.
-6. OPCIONAL: Você pode personalizar os métodos HTTP permitidos para a rota, por exemplo, `GET`, `POST`, `PATCH`, dentre outros.
+6. **OPCIONAL**: Você pode personalizar os métodos HTTP permitidos para a rota, por exemplo, `GET`, `POST`, `PATCH`, dentre outros.
 
 #### Habilitando o Plugin
 Com o service e route definidos, agora é necessário habilitar o plugin.
@@ -105,7 +105,7 @@ token header is not valid or expired
 ### Testando Forbiden (403)
 Faça uma requisição com um token JWT válido, porém, com o escopo não permitido.
 
-* utilize a automação [generate-token](./generate-token/main.go) para gerar um novo token JWT, mas altere o escopo de roles para:
+* utilize a automação [generate-token](./generate-token/README.md) para gerar um novo token JWT, mas altere o escopo de roles para:
 ```diff
 - "roles": []string{"admin", "superadmin"},
 + "roles": []string{"admin", "batata"},
@@ -125,7 +125,7 @@ token has no permission
 ### Testando Ok (200)
 Faça uma requisição com um token JWT válido
 
-* utilize a automação [generate-token](./generate-token/main.go) para gerar um novo token JWT.
+* utilize a automação [generate-token](./generate-token/README.md) para gerar um novo token JWT.
 * Certifique-se que o escopo do claim é: ```{"admin", "superadmin"}```
 
 Saída esperada:
