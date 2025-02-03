@@ -32,10 +32,10 @@ Uma vez que você tenha inicializado todos os serviços usando o Docker Compose,
 
 * `Kong Admin GUI`: Esta é a interface gráfica do usuário e pode ser acessada através de `http://localhost:8002`. A GUI oferece uma maneira mais visual e interativa para gerenciar os aspectos do seu gateway API. Ele é especialmente útil para visualizar o fluxo de tráfego, modificar configurações existentes ou adicionar novas funcionalidades de forma mais intuitiva.
 
-#### Troubleshooting
+## Troubleshooting
 Se você encontrar problemas ao usar este ambiente Kong, a primeira coisa a fazer é conferir os logs dos contêineres em questão. Isso pode ser feito usando `docker logs` <container_name>. Além disso, as interfaces de administração podem fornecer informações úteis sobre a configuração atual e o estado dos plugins e serviços. Se você suspeitar de problemas com plugins específicos, verifique se eles estão corretamente listados e ativados tanto na Admin API quanto na GUI. Certifique-se também de que a estrutura de pastas e os arquivos YAML estão corretamente formatados e localizados nos lugares corretos.
 
-### Setando um service e rota via console do Kong Manager:
+## Setando um service e rota via console do Kong Manager:
 
 #### Definindo o Service Gateway
 1. No menu lateral esquerdo, escolha a opção **Gateway Services**
@@ -53,7 +53,7 @@ Após a definição do Service, vamos à definição da Rota.
 5. Defina um path (ou rota) para o seu serviço, por exemplo: ```/api```.
 6. **OPCIONAL**: Você pode personalizar os métodos HTTP permitidos para a rota, por exemplo, `GET`, `POST`, `PATCH`, dentre outros.
 
-#### Habilitando o Plugin
+## Habilitando o Plugin
 Com o service e route definidos, agora é necessário habilitar o plugin.
 
 `SUGESTÃO`: Habilitar o plugin individualmente por rota, isso evita que outros serviços/rotas não sejam afetados por algum mau funcionamento ou comportamento indesejado do plugin.
@@ -74,11 +74,13 @@ Com o service e route definidos, agora é necessário habilitar o plugin.
     * `required_values` → Exemplo: ["admin", "superadmin"] (define quem pode acessar a API).
 5. Clique em Save para ativar o plugin.
 
-## Testando a requisição autenticada
+## Testes e Validações
+
+#### Testando a requisição autenticada
 Para realizar o teste no serviço cadastrado no kong, faça as seguintes requests:
 
 
-### Testando requisição sem token (401)
+#### Testando requisição sem token (401)
 Faça uma requisição sem token no header.
 ```bash
 curl -i http://localhost:8000/api/todos/1
@@ -90,8 +92,7 @@ HTTP/1.1 401 Unauthorized
 token token header empty or not valid
 ```
 
-
-### Testando unauthorizer (401)
+#### Testando unauthorizer (401)
 Faça uma requisição com um valor de token inválido.
 ```bash
 curl -i -H "Authorization: Bearer xpto" http://localhost:8000/api/todos/1
@@ -102,7 +103,7 @@ Saída esperada:
 HTTP/1.1 401 Unauthorized
 token header is not valid or expired
 ```
-### Testando Forbiden (403)
+#### Testando Forbiden (403)
 Faça uma requisição com um token JWT válido, porém, com o escopo não permitido.
 
 * utilize a automação [generate-token](./generate-token/README.md) para gerar um novo token JWT, mas altere o escopo de roles para:
@@ -122,7 +123,7 @@ Saída esperada:
 HTTP/1.1 403 Forbidden
 token has no permission
 ```
-### Testando Ok (200)
+#### Testando Ok (200)
 Faça uma requisição com um token JWT válido
 
 * utilize a automação [generate-token](./generate-token/README.md) para gerar um novo token JWT.
