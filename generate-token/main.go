@@ -2,13 +2,18 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
 )
 
 func GenerateTokenJwt() (string, error) {
-	SECRET_KEY := "secretkey@123!"
+	secretKey := os.Getenv("JWT_SECRET_KEY")
+
+	if secretKey == "" {
+		return "", fmt.Errorf("JWT_SECRET_KEY not found or not set")
+	}
 
 	claims := jwt.MapClaims{
 		"iss":   "my-issuer",
@@ -21,7 +26,7 @@ func GenerateTokenJwt() (string, error) {
 	token.Header["alg"] = "HS256" // Garantir que o header é idêntico
 	token.Header["typ"] = "JWT"
 
-	tokenString, err := token.SignedString([]byte(SECRET_KEY))
+	tokenString, err := token.SignedString([]byte(secretKey))
 	if err != nil {
 		return "", err
 	}

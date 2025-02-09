@@ -1,0 +1,41 @@
+---
+    name: Golang Scans
+    
+    on:
+      push:
+        paths:
+          - "**.go"
+          - "go.mod"
+          - "go.sum"
+    
+    concurrency:
+      group: golang-checks-${{ github.head_ref }}
+      cancel-in-progress: true
+    
+    permissions:
+      contents: read
+    
+    jobs:  
+      lint:
+        name: Scans and Checks
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+            with:
+              persist-credentials: false
+    
+          - name: Set up Go
+            uses: actions/setup-go@v5
+            with:
+              go-version: "1.22"
+              check-latest: true
+    
+          - name: Install Linters
+            run:
+              make install-tools
+    
+          - name: Run Linters
+            run: |
+              make go-checks
+              git diff --exit-code

@@ -9,7 +9,8 @@ Este programa gera um JWT (JSON Web Token) assinado com o algoritmo HS256, conte
 * `Issuer` (iss): "my-issuer" (precisa corresponder à configuração do Kong).
 * `Roles` (roles): ["admin", "superadmin"] (permite testar diferentes permissões no Severino-Plugin).
 * `Expiração` (exp): Token válido por 24 horas.
-* `Assinatura`: Usa a chave secreta "secretkey@123!" para assinar o token.
+* `Assinatura`: Usa a chave secreta, por exemplo, "secretkey@123!" para assinar o token.
+    * A chave secreta deve ser informada via variável de ambiente **ANTES**, da execução do programa: ``export JWT_SECRET_KEY=secretkey@123!``
 
 O JWT gerado pode ser usado para testar a autenticação e autorização no Kong API Gateway.
 

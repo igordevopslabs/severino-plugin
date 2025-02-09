@@ -148,7 +148,7 @@ func (plugin *SeverinoPlugin) checkPermission(claims jwt.MapClaims) bool {
 	//validação se todos os valores requiridos no array estão presentes
 	required := make(map[string]bool)
 	for _, val := range plugin.Config.RequiredValues {
-		pkg.LogError("required value", fmt.Errorf(val))
+		pkg.LogError("required value", fmt.Errorf("%s", val))
 		required[val] = false
 	}
 
