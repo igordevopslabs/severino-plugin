@@ -9,7 +9,7 @@ import (
 )
 
 func GenerateTokenJwt() (string, error) {
-	secretKey := os.Getenv("JWT_SECRET_KEY")
+	secretKey := os.Getenv("JWT_SECRET_KEY") //deve ser setado antes de rodar o programa
 
 	if secretKey == "" {
 		return "", fmt.Errorf("JWT_SECRET_KEY not found or not set")
