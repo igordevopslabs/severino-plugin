@@ -1,6 +1,4 @@
-# severino-plugin
-[![Golang Scans](https://github.com/igordevopslabs/severino-plugin/actions/workflows/go-checks.yml/badge.svg)](https://github.com/igordevopslabs/severino-plugin/actions/workflows/go-checks.yml)
-
+# severino-plugin [![Golang Scans](https://github.com/igordevopslabs/severino-plugin/actions/workflows/go-checks.yml/badge.svg)](https://github.com/igordevopslabs/severino-plugin/actions/workflows/go-checks.yml)
 
 
 O Severino-Plugin é um plugin customizado para o Kong API Gateway, desenvolvido em Golang, que valida tokens JWT (JSON Web Token) e controla o acesso às rotas com base nas permissões definidas.
