@@ -19,6 +19,8 @@ Se todas as condições forem atendidas, a requisição é permitida. Caso contr
 ## Setup do Ambiente
 Para podermos testar o plugin, será necessário subir uma stack do Kong, com controlplane e dataplane, além da interface gráfica do Kong Manager para que possamos criar os services e definir os plugins.
 
+**ATENÇÃO**: Antes de executar o docker-compose, crie uma pasta oculta na raiz chamada ``./secrets``. Essa pasta será necessária para armazenar os certificados do kong responsáveis pela comunicação em control-plane e data-plane.
+
 Você será capaz de subir toda essa stack apenas executando o comando:
 ```bash
 docker-compose up --build
